@@ -158,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="MultiThreading.vb" />
     <Compile Include="frmImage.Designer.vb">
       <DependentUpon>frmImage.vb</DependentUpon>
     </Compile>

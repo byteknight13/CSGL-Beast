@@ -32,6 +32,7 @@ Partial Class frmItems
         Me.Bar1 = New DevExpress.XtraBars.Bar()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.mnuShowImage = New DevExpress.XtraBars.BarButtonItem()
+        Me.mnuExportExcel = New DevExpress.XtraBars.BarButtonItem()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
@@ -39,7 +40,6 @@ Partial Class frmItems
         Me.BarEditItem1 = New DevExpress.XtraBars.BarEditItem()
         Me.RepositoryItemPictureEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit()
         Me.tmrFormMonitor = New System.Windows.Forms.Timer()
-        Me.mnuExportExcel = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gridview2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -68,6 +68,9 @@ Partial Class frmItems
         Me.gridview2.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[False]
         Me.gridview2.OptionsBehavior.Editable = False
         Me.gridview2.OptionsView.ShowFooter = True
+        '
+        'bgWorker1
+        '
         '
         'ImageCollection1
         '
@@ -136,6 +139,14 @@ Partial Class frmItems
         Me.mnuShowImage.LargeGlyph = CType(resources.GetObject("mnuShowImage.LargeGlyph"), System.Drawing.Image)
         Me.mnuShowImage.Name = "mnuShowImage"
         '
+        'mnuExportExcel
+        '
+        Me.mnuExportExcel.Caption = "Export To Excel"
+        Me.mnuExportExcel.Glyph = CType(resources.GetObject("mnuExportExcel.Glyph"), System.Drawing.Image)
+        Me.mnuExportExcel.Id = 5
+        Me.mnuExportExcel.LargeGlyph = CType(resources.GetObject("mnuExportExcel.LargeGlyph"), System.Drawing.Image)
+        Me.mnuExportExcel.Name = "mnuExportExcel"
+        '
         'barDockControlTop
         '
         Me.barDockControlTop.CausesValidation = False
@@ -177,14 +188,6 @@ Partial Class frmItems
         '
         'tmrFormMonitor
         '
-        '
-        'mnuExportExcel
-        '
-        Me.mnuExportExcel.Caption = "Export To Excel"
-        Me.mnuExportExcel.Glyph = CType(resources.GetObject("mnuExportExcel.Glyph"), System.Drawing.Image)
-        Me.mnuExportExcel.Id = 5
-        Me.mnuExportExcel.LargeGlyph = CType(resources.GetObject("mnuExportExcel.LargeGlyph"), System.Drawing.Image)
-        Me.mnuExportExcel.Name = "mnuExportExcel"
         '
         'frmItems
         '

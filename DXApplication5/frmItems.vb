@@ -1,14 +1,14 @@
 ﻿Public Class frmItems
     Public sPicFilePath As String = String.Empty
 
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub gridview2_Click(sender As Object, e As EventArgs) Handles gridview2.Click
         For Each row In gridview2.GetSelectedRows
-            sPicFilePath = String.Format("{0}\{1}.jpg", filepathIcons, gridview2.GetRowCellValue(row, "name"))
-            frmImage.PictureBox1.Image = Image.FromFile(sPicFilePath)
+            Try
+                sPicFilePath = String.Format("{0}\{1}.jpg", filepathIcons, gridview2.GetRowCellValue(row, "name"))
+                frmImage.PictureBox1.Image = Image.FromFile(sPicFilePath)
+            Catch ex As System.IO.FileNotFoundException
+                Debug.WriteLine("Couldn't find image: " & ex.Message)
+            End Try
         Next
     End Sub
 
@@ -31,13 +31,15 @@
     End Sub
 
     Private Sub BarButtonItem2_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem2.ItemClick
-        GridControl1.DataSource = GetWeaponList("http://csgolounge.com/api/schema.php")
+        'Dim dt As DataTable = GetWeaponList("http://csgolounge.com/api/schema.php")
+        'GridControl1.DataSource = dt
         SaveImagesFromWeaponList()
         For i = 0 To gridview2.Columns.Count - 1
             gridview2.Columns.Item(i).OptionsColumn.AllowEdit = False
         Next
         FormatColumnHeaders()
-        Debug.WriteLine("Done.")
+        'MakeImagesBinary()
+        Debug.WriteLine("Done loading items.")
     End Sub
 
     Private Sub frmItems_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -86,6 +88,17 @@
     End Sub
 
     Private Sub GridControl1_Click(sender As Object, e As EventArgs) Handles GridControl1.Click
+
+    End Sub
+
+    Private Sub bgWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bgWorker1.DoWork
+        If bgWorker1.WorkerSupportsCancellation = True AndAlso bgWorker1.CancellationPending = True Then
+            e.Cancel = True
+            e.Result = Nothing
+        Else
+            Dim dt As DataTable = GetWeaponList("http://csgolounge.com/api/schema.php")
+            = dt
+        End If
 
     End Sub
 End Class

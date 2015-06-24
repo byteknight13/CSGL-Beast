@@ -22,7 +22,6 @@
     ''' the contents of this method with the code editor.
     ''' </summary>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.CardView1 = New DevExpress.XtraGrid.Views.Card.CardView()
         Me.grdMatches = New DevExpress.XtraGrid.GridControl()
@@ -31,9 +30,9 @@
         Me.LayoutViewCard1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
         Me.Bandedgridview2 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridView()
         Me.GridBand1 = New DevExpress.XtraGrid.Views.BandedGrid.GridBand()
-        Me.DefaultLookAndFeel1 = New DevExpress.LookAndFeel.DefaultLookAndFeel(Me.components)
-        Me.AlertControl1 = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
-        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.DefaultLookAndFeel1 = New DevExpress.LookAndFeel.DefaultLookAndFeel()
+        Me.AlertControl1 = New DevExpress.XtraBars.Alerter.AlertControl()
+        Me.BarManager1 = New DevExpress.XtraBars.BarManager()
         Me.Bar2 = New DevExpress.XtraBars.Bar()
         Me.mnuReload = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
@@ -42,6 +41,7 @@
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.mnuHelp = New DevExpress.XtraBars.BarButtonItem()
         Me.Bar3 = New DevExpress.XtraBars.Bar()
+        Me.lblTotalMatches = New DevExpress.XtraBars.BarStaticItem()
         Me.SkinBarSubItem1 = New DevExpress.XtraBars.SkinBarSubItem()
         Me.Bar1 = New DevExpress.XtraBars.Bar()
         Me.BarHeaderItem1 = New DevExpress.XtraBars.BarHeaderItem()
@@ -66,8 +66,7 @@
         Me.RepositoryItemComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.mnuTeamTwoEdit = New DevExpress.XtraBars.BarEditItem()
         Me.RepositoryItemComboBox2 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
-        Me.lblTotalMatches = New DevExpress.XtraBars.BarStaticItem()
-        Me.tmrStatusLabel = New System.Windows.Forms.Timer(Me.components)
+        Me.tmrStatusLabel = New System.Windows.Forms.Timer()
         CType(Me.CardView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdMatches, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -228,6 +227,13 @@
         Me.Bar3.OptionsBar.DrawDragBorder = False
         Me.Bar3.OptionsBar.UseWholeRow = True
         Me.Bar3.Text = "Status bar"
+        '
+        'lblTotalMatches
+        '
+        Me.lblTotalMatches.Caption = "Total Matches In List:"
+        Me.lblTotalMatches.Id = 19
+        Me.lblTotalMatches.Name = "lblTotalMatches"
+        Me.lblTotalMatches.TextAlignment = System.Drawing.StringAlignment.Near
         '
         'SkinBarSubItem1
         '
@@ -413,13 +419,6 @@
         Me.RepositoryItemComboBox2.AutoHeight = False
         Me.RepositoryItemComboBox2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.RepositoryItemComboBox2.Name = "RepositoryItemComboBox2"
-        '
-        'lblTotalMatches
-        '
-        Me.lblTotalMatches.Caption = "Total Matches In List:"
-        Me.lblTotalMatches.Id = 19
-        Me.lblTotalMatches.Name = "lblTotalMatches"
-        Me.lblTotalMatches.TextAlignment = System.Drawing.StringAlignment.Near
         '
         'tmrStatusLabel
         '

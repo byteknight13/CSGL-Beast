@@ -148,7 +148,6 @@ Module modFunctions
             Dim jsSerializer As New System.Web.Script.Serialization.JavaScriptSerializer() 'read json into a string
             Dim dict As Dictionary(Of String, Object)
             dict = jsSerializer.Deserialize(Of Dictionary(Of String, Object))(jsonString)
-
             Dim dt As New DataTable
             With dt ' set the column types as you see fit
                 .Columns.Add("name", GetType(String))
@@ -159,12 +158,10 @@ Module modFunctions
                 .Columns.Add("exterior", GetType(Object))
                 .Columns.Add("quality", GetType(Object))
                 .Columns.Add("icon", GetType(Object))
-                .Columns.Add("worth", GetType(Object))
+                .Columns.Add("worth", GetType(Double))
                 .Columns.Add("betable", GetType(Object))
-                .Columns.Add("binary", GetType(Byte()))
+                '.Columns.Add("binary", GetType(Byte()))
             End With
-
-
             Dim dr As DataRow
             For Each row As Dictionary(Of String, Object) In dict.Values
                 dr = dt.NewRow
@@ -173,6 +170,7 @@ Module modFunctions
                 Next
                 dt.Rows.Add(dr)
             Next
+            
             web.Dispose()
             Return dt
         Catch ex As Exception
@@ -280,10 +278,18 @@ Module modFunctions
         Dim binIMG As Byte()
         Dim bmpIMG As Image = Nothing
         For i = 0 To frmItems.gridview2.RowCount - 1
-            Dim sPicFilePath As String = String.Format("{0}\{1}.jpg", filepathIcons, frmItems.gridview2.GetRowCellValue(i, "name"))
-            bmpIMG = Image.FromFile(sPicFilePath)
-            binIMG = GetBinary(bmpIMG, Nothing)
-            frmItems.gridview2.SetRowCellValue(i, "binary", binIMG)
+            If Not frmItems.gridview2.GetRowCellValue(i, "icon").ToString <> "" Then
+                Continue For
+            End If
+            Try
+                Dim sPicFilePath As String = String.Format("{0}\{1}.jpg", filepathIcons, frmItems.gridview2.GetRowCellValue(i, "name"))
+                bmpIMG = Image.FromFile(sPicFilePath)
+                Debug.WriteLine(String.Format("bmpIMG Dimensions: {0}", bmpIMG.Size))
+                binIMG = GetBinary(bmpIMG, ImageFormat.Jpeg)
+                frmItems.gridview2.SetRowCellValue(i, "binary", binIMG)
+            Catch ex As Exception
+                Debug.WriteLine(ex.Message)
+            End Try
         Next
     End Sub
 
